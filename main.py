@@ -4,9 +4,13 @@ import random
 import numpy as np
 import cv2
 
-file = open('aachen_000000_000019_gtFine_polygons.json',)
-
-data = json.load(file)
+try:
+    file = open('aachen_000000_000019_gtFine_polygons.json',)
+    data = json.load(file)
+except:
+    print('couldn\'t load file')
+else:
+    print('file loaded')
 
 height = data['imgHeight']
 width = data['imgWidth']
