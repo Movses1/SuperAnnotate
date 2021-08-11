@@ -24,7 +24,6 @@ fuseImg = np.zeros((height,width,3),np.uint8)
 
 objects = data['objects']
 
-objAmount = {}                         # key is the class/label, value is the amount that class has appeared
 usedColors = {}                        # key is the class/label, value is the color prescribed to it
 
 for object in objects:                 # creating Fuse.jpg
@@ -33,7 +32,6 @@ for object in objects:                 # creating Fuse.jpg
 
     if(label in usedColors):
         objColor = usedColors[object['label']]
-        objAmount[label] += 1
     else:
         while True:
             red = random.randint(0,255)
@@ -43,7 +41,6 @@ for object in objects:                 # creating Fuse.jpg
             if(not objColor in usedColors.values()):
                 break
         usedColors[label] = objColor
-        objAmount[label] = 1
 
     pts = object['polygon']
     npPts = np.array(pts)
